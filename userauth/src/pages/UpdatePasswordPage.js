@@ -1,0 +1,72 @@
+import { EmailAuthProvider } from 'firebase/auth';
+import {Link, useNavigate} from 'react-router-dom';
+import {getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+import {useState} from 'react';
+
+const UpdatePasswordPage = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState ('');
+    const [error, setError] = useState('');
+
+    const navigate = useNavigate ();
+
+    const createAccount = async () =>{ //same function as create account, just to verify the new password and confirm password match
+        try{
+            if (password !== confirmPassword) {
+                return setError('Please make sure passwords match.')
+            }
+            await createUserWithEmailAndPassword(getAuth(), email, password);
+            navigate('/login')
+        }   
+        catch (e) {
+            setError(e.message);
+        }
+    }
+
+    const savePassword = async ()=>{
+        const creds = EmailAuthProvider.credential(email, password);
+        await firebase.auth().currentUser.reauthenticateWithCredential(creds).then(async()=>{
+        await firebase.auth().currentUser.updatePassword(newPassword);
+        console.log('password successfully updated');
+    }).catch(error =>{
+        console.log('Error during reauthentication', error);
+    });
+    }
+
+  return (
+    <>
+        <h1 className='title'>Update your password</h1>
+        {error && <p className="error">{error}</p>}
+        <div className='form'>
+            <input
+                type="email"
+                placeholder="Email" 
+                value={email} 
+                onChange={e => setEmail(e.target.value)}/>
+            <input
+                type="password"
+                placeholder="Old password" 
+                value={password} 
+                onChange={e => setPassword(e.target.value)}/>
+            <br/>
+            <br/>
+            <input 
+                type="password" 
+                placeholder="Your new password" 
+                value={newPassword} 
+                onChange={e => setNewPassword(e.target.value)}/>
+            <input 
+                type="password" 
+                placeholder="Repeat new password" 
+                value={newPassword} 
+                onChange={e => setConfirmPassword(e.target.value)}/>
+            <button className='loginbutton' onClick={createAccount}>Confirm changes</button>
+            <Link to="/settings">Back to settings</Link>
+        </div>
+    </>
+  )
+}
+
+export default UpdatePasswordPage
