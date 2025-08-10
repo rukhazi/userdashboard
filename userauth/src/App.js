@@ -10,6 +10,9 @@ import { getAnalytics } from "firebase/analytics";
 import NotFoundPage from './pages/NotFoundPage';
 import SettingsPage from './pages/SettingsPage';
 import UpdatePasswordPage from './pages/UpdatePasswordPage';
+import ArticlePage from './pages/ArticlePage';
+import ArticleListPage from './pages/ArticleListPage';
+import ArticleContent from './pages/Article-Content';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCybUG5nRmhVxOCRd8dWZ226BukAady3fc",
@@ -27,9 +30,13 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+
         <NavBar/>
         <div id="page-pody">
           <Routes>
+            <Route path="/articlelist" element={<ArticleListPage/>}/>
+            <Route path="/article" element={<ArticlePage/>}/>
+            <Route path="/article-content" element={<ArticleContent/>}/>
             <Route path="/settings" element={<SettingsPage/>}/>
             <Route path="/updatepass" element={<UpdatePasswordPage/>}/>
             <Route path="/user-authentication" element={<HomePage/>}/>

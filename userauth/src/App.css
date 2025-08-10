@@ -1,18 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Quicksand:wght@300..700&display=swap');
-
+*{
+  transition: all 0.5;
+}
 body{
+  margin: 0;
+  padding-top: 10%;
   font-family: "Quicksand", sans-serif;
-  background-color: #fcf8ef;
+  background-color: var(--body_background);
+}
+
+.logo{
+  background-color: grey;
+  display: flex;
+  justify-self: center;
+  text-align: center;
 }
 
 /*navbar css*/
 nav{
+  width: 100%;
   background-color: #dbbaa7;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   padding-top: 10px;
+  position: fixed;
+  top: 0;
 }
 ul{
   background-color: #d2ac97;
@@ -29,14 +43,14 @@ li {
 
 }
 li a {
-  color: white;
+  color: var(--body_color);
   text-align: center;
   text-decoration: none;
 }
 .login-out{
   font-family: "Quicksand", sans-serif;
   background-color: #d2ac97;
-  color: white;
+  color: var(--body_color);
   font-size: 15.5px;
   border: none;
   border-radius: 5px;
@@ -51,6 +65,7 @@ li a {
 
 .title{
   text-align: center;
+  color: var(--body_color);
 }
 
 /*forms: sign in and create account*/
@@ -82,7 +97,8 @@ input[type=password], select {
 }
 .loginbutton{
   background-color: #908b6b;
-  color: white;
+  border-radius: 5px;
+  color: var(--body_color);
   text-align: center;  
   font-size: 16px;
   border: none;
@@ -96,16 +112,20 @@ input[type=password], select {
 }
 
 .paragraph{
+  display: flex;
+  font-size: 20px;
+  flex-direction: column;
+  align-items: center;
   background-color: #CACAA8;
   border-radius: 5px;
-  padding: 10px 15px;
+  padding: 40px 10px 15px;
   margin: auto;
   width: 100ch;
 }
 
 .button1{
   background-color: #908b6b;
-  color: white;
+  color: var(--body_color);
   border-radius: 5px;
   text-align: center;  
   font-size: 16px;
@@ -118,3 +138,45 @@ input[type=password], select {
   cursor: pointer;
 }
 
+/*responsive*/
+@media (min-width: 320px) { /*both*/
+  .title{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) { /*mobile*/
+  .paragraph{
+    width: 90%;
+    font-size: 20px;
+  }
+  .title{
+    margin-top: 40px;
+    width: 100%;
+    height: auto;
+  }
+  .form{
+  font-size: 16px;
+  width: 60%;
+}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) { /*tablet*/
+  .paragraph{
+    width: 70ch;
+  }
+  .form{
+    font-size: 16px;
+    width: 30%;
+  }
+} 
+
+@media (min-width: 1025px) { /*desktop*/
+    .paragraph{
+    width: 80ch;
+  }
+    .form{
+    font-size: 16px;
+    width: 30%;
+  }
+}

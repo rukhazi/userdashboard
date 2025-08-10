@@ -25,15 +25,15 @@ const UpdatePasswordPage = () => {
         }
     }
 
-    const savePassword = async ()=>{
-        const creds = EmailAuthProvider.credential(email, password);
-        await firebase.auth().currentUser.reauthenticateWithCredential(creds).then(async()=>{
-        await firebase.auth().currentUser.updatePassword(newPassword);
-        console.log('password successfully updated');
-    }).catch(error =>{
-        console.log('Error during reauthentication', error);
-    });
-    }
+    // const savePassword = async ()=>{
+    //     const creds = EmailAuthProvider.credential(email, password);
+    //     await auth().currentUser.reauthenticateWithCredential(creds).then(async()=>{
+    //     await auth().currentUser.updatePassword(newPassword);
+    //     console.log('password successfully updated');
+    // }).catch(error =>{
+    //     console.log('Error during reauthentication', error);
+    // });
+    // }
 
   return (
     <>

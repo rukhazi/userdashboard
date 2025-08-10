@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link, useNavigate} from 'react-router-dom';
+import DarkMode from '../component/DarkMode';
 
 
 const SettingsPage = () => {
@@ -7,9 +8,9 @@ const SettingsPage = () => {
     <>
         <h1 className='title'>Settings page!</h1>
         <div className='form'>
-            <Link className='button1' to="/dashboard">Back</Link>
+            <Link className='button1' to="/dashboard"> &larr; Back</Link>
             <Link className='button1' to="/updatepass">Update your Password</Link>
-            <p>Turn on dark theme -checkbox function</p>
+            <DarkMode/>
         </div>
     </>
   )
