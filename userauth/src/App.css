@@ -62,7 +62,9 @@ li a {
   cursor: pointer;
 }
 /*------------------------------------*/
-
+.error{
+  text-align: center;
+}
 .title{
   text-align: center;
   color: var(--body_color);
@@ -137,7 +139,7 @@ input[type=password], select {
   margin: 4px 2px;
   cursor: pointer;
 }
-
+/*------------------------------------*/
 /*responsive*/
 @media (min-width: 320px) { /*both*/
   .title{
